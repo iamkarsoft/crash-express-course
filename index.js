@@ -4,6 +4,15 @@ const members = require('./Members');
 const app = express();
 
 
+// middleware
+const logger = (req, res, next) =>{
+  console.log(`${req.protocol}://${req.get('host')}${req.originalUrl}`);
+  next();
+}
+
+// init middleware
+app.use(logger);
+
 // creating routes
 
 app.get('/api/members',(req,res)=> res.json(members));
