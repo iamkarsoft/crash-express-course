@@ -1,14 +1,11 @@
 const express = require('express');
 const path = require('path');
+const logger = require('./middleware/logger');
 const members = require('./Members');
+
 const app = express();
 
 
-// middleware
-const logger = (req, res, next) =>{
-  console.log(`${req.protocol}://${req.get('host')}${req.originalUrl}`);
-  next();
-}
 
 // init middleware
 app.use(logger);
